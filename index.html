@@ -1,0 +1,2984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>TWENTYONE38 - Premium Content Spaces</title>
+    
+    <!-- Shopify Buy Button SDK -->
+    <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+    
+    <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #000000 !important;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1001;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 80px 20px 20px 20px;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        .mobile-nav a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin: 8px 0;
+            padding: 12px 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .mobile-nav a:hover {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: #D4AF37;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            padding: 0.75rem 1rem;
+            color: #333;
+            font-weight: 400;
+        }
+        
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #B7A57A;
+        }
+        
+        /* Submenu Styles */
+        .dropdown-submenu {
+            position: relative;
+        }
+        
+        .submenu-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #B7A57A !important;
+        }
+        
+        .submenu-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-left: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .dropdown-submenu:hover .submenu-content {
+            display: block;
+        }
+        
+        .submenu-content a {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .submenu-content a:hover {
+            background: #f8f9fa;
+            color: #B7A57A;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+        
+        .hero h1 .bold {
+            font-weight: 400;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            font-weight: 300;
+            white-space: nowrap;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* GOLD BUTTONS - NO PURPLE */
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* NO TEXT WRAPPING */
+        }
+        
+        .btn-primary {
+            background-color: #B7A57A;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #A6946B;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+        
+        .section p {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        /* Spaces Grid */
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .space-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+        
+        .space-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .space-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .space-buttons .btn {
+            flex: 1;
+            max-width: 140px;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 1rem;
+            white-space: nowrap; /* NO TEXT WRAPPING */
+        }
+        
+        .space-image {
+            height: 250px !important;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            display: block;
+            min-height: 250px;
+        }
+        
+        .space-content {
+            padding: 2rem;
+        }
+        
+        .space-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        /* GOLD PRICE - LEFT ALIGNED */
+        .space-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #B7A57A;
+            margin-bottom: 1rem;
+            text-align: left;
+            line-height: 1.4;
+        }
+        
+        .price-weekday {
+            display: block;
+        }
+        
+        .price-weekend {
+            display: block;
+        }
+        
+        .space-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .space-features li {
+            padding: 0.5rem 0;
+            color: #cccccc;
+            white-space: nowrap; /* NO TEXT WRAPPING */
+        }
+        
+        .space-features li:before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap; /* NO TEXT WRAPPING */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Video Gallery Styles */
+        .video-gallery {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .video-item {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-caption {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ffffff;
+            white-space: nowrap; /* NO TEXT WRAPPING */
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .close:hover {
+            color: #B7A57A;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: #1a1a1a;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info h2 {
+            color: #B7A57A;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+        
+        .contact-info a {
+            color: #B7A57A;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 1.4rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 15px !important;
+                padding: 0 10px !important;
+                word-wrap: break-word !important;
+                hyphens: auto !important;
+                white-space: normal !important;
+            }
+            
+            .hero p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 10px !important;
+                padding: 0 15px !important;
+            }
+            
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 10px !important;
+                padding: 0 20px !important;
+            }
+            
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100% !important;
+                max-width: 280px !important;
+                font-size: 0.9rem !important;
+                padding: 12px 20px !important;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .spaces-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .space-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.2rem !important;
+                padding: 0 5px !important;
+            }
+            
+            .hero p {
+                font-size: 0.8rem !important;
+                padding: 0 10px !important;
+            }
+        }
+        
+        /* Popup Form Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .popup-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .popup-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .popup-header h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .popup-header p {
+            color: #666;
+            margin: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .time-slot {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .time-slot:hover {
+            border-color: #d4af37;
+            background: #faf8f0;
+        }
+        
+        .time-slot.selected {
+            background: #d4af37;
+            color: white;
+            border-color: #d4af37;
+        }
+        
+        .time-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .time-input-group select {
+            width: auto;
+            min-width: 70px;
+        }
+        
+        .time-input-group label {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+        
+        .calculation-box {
+            background: #f8f8f8;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #333;
+        }
+        
+        .calculation-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .calculation-row.total {
+            border-top: 2px solid #d4af37;
+            padding-top: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #d4af37;
+        }
+        
+        .discount-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .discount-input input {
+            flex: 1;
+        }
+        
+        .discount-input button {
+            background: #d4af37;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .total-hours-display {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .btn-submit {
+            background: #d4af37;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            /* Navigation */
+            .nav {
+                padding: 10px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav .logo {
+                font-size: 18px;
+            }
+            
+            /* Hero Section */
+            .hero-content h1 {
+                font-size: 1.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 10px;
+                text-align: left !important;
+                padding: 0 1rem;
+                white-space: normal;
+            }
+            
+            .hero-content p {
+                font-size: 0.8rem !important;
+                margin-bottom: 12px;
+                line-height: 1.4;
+                text-align: left !important;
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                text-align: left !important;
+                padding: 0 1rem;
+            }
+            
+            /* Video Gallery */
+            .video-gallery video {
+                height: 180px;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .video-gallery {
+                margin: 20px 0;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 15px 25px;
+                font-size: 16px;
+                text-align: center;
+            }
+            
+            /* Space Cards Mobile */
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            /* Spaces Grid */
+            .spaces-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .space-card {
+                margin-bottom: 20px;
+            }
+            
+            .space-image {
+                height: 250px;
+            }
+            
+            .space-content {
+                padding: 20px;
+            }
+            
+            .space-title {
+                font-size: 1.5rem;
+            }
+            
+            .space-price span {
+                font-size: 14px;
+                display: block;
+                margin-bottom: 5px;
+            }
+            
+            .space-features {
+                font-size: 14px;
+            }
+            
+            .space-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .space-buttons .btn {
+                width: 100%;
+            }
+            
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .gallery-item {
+                height: 120px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            /* Video Gallery */
+            .video-gallery video {
+                height: 200px;
+            }
+            
+            /* Contact */
+            .contact-info {
+                text-align: center;
+            }
+            
+            .contact-info a {
+                font-size: 16px;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Mobile Popup Form */
+        @media (max-width: 768px) {
+            .popup-form {
+                width: 95%;
+                max-width: none;
+                margin: 20px auto;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .popup-form h2 {
+                font-size: 1.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            .form-group label {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+                padding: 12px;
+                min-height: 44px;
+            }
+            
+            .time-input-group {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .time-input-group select {
+                min-width: 60px;
+                flex: 1;
+            }
+            
+            .calculation-box {
+                margin: 20px 0;
+                padding: 15px;
+            }
+            
+            .calculation-row {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            
+            .calculation-row.total {
+                font-size: 15px;
+            }
+            
+            .discount-input {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .discount-input button {
+                width: 100%;
+                padding: 12px;
+            }
+            
+            .total-hours-display {
+                font-size: 14px;
+                padding: 12px;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .form-buttons .btn {
+                width: 100%;
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (max-width: 768px) {
+            /* Hero Video Mobile Optimization */
+            .hero {
+                min-height: 60vh;
+            }
+            
+            .hero video {
+                height: 60vh;
+                object-fit: cover;
+            }
+            
+            /* Better mobile gallery spacing */
+            .gallery-section {
+                padding: 30px 15px;
+            }
+            
+            .gallery-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .gallery-section p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+            
+            /* Larger touch targets */
+            .nav ul li a,
+            .btn,
+            .space-buttons .btn,
+            .popup-close {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* Better spacing for touch */
+            .space-features li {
+                padding: 8px 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .space-features li:last-child {
+                border-bottom: none;
+            }
+            
+            /* Improved form interactions */
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                outline: 2px solid #d4af37;
+                outline-offset: 2px;
+            }
+        }  
+        .btn-cancel {
+            background: #666;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-cancel:hover {
+            background: #555;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        
+        .close-popup:hover {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-form {
+                padding: 25px;
+                margin: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+            
+            /* Mobile text alignment - LEFT JUSTIFY ALL TEXT */
+            .hero-content {
+                text-align: left !important;
+                padding: 20px !important;
+                max-width: 100% !important;
+            }
+            
+            .hero-content h1 {
+                text-align: left !important;
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .hero-content h1 img {
+                display: block !important;
+                margin: 0 auto 5px auto !important;
+                max-width: 150px !important;
+                text-align: center !important;
+            }
+            
+            .hero-content p {
+                text-align: left !important;
+                font-size: 1rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 10px !important;
+                word-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            
+            .section {
+                padding: 40px 20px !important;
+                text-align: left !important;
+            }
+            
+            .section h2 {
+                text-align: left !important;
+                font-size: 1.8rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .section p {
+                text-align: left !important;
+                font-size: 1rem !important;
+                line-height: 1.4 !important;
+                word-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            
+            .spaces-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                padding: 0 !important;
+            }
+            
+            .space-card {
+                text-align: left !important;
+                padding: 20px !important;
+            }
+            
+            .space-card h3 {
+                text-align: left !important;
+                font-size: 1.5rem !important;
+            }
+            
+            .space-card .price {
+                text-align: left !important;
+                font-size: 0.5rem !important;
+                line-height: 1.0 !important;
+                white-space: nowrap !important;
+                margin-bottom: 10px !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                max-width: 100% !important;
+                word-break: keep-all !important;
+                word-wrap: normal !important;
+                flex-shrink: 0 !important;
+                display: block !important;
+            }
+            
+            .space-card .features {
+                text-align: left !important;
+            }
+            
+            .space-card .features li {
+                text-align: left !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .cta-buttons {
+                flex-direction: column !important;
+                gap: 15px !important;
+                align-items: flex-start !important;
+            }
+            
+            .btn {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 15px 20px !important;
+                font-size: 1rem !important;
+            }
+            
+            /* Gallery sections mobile */
+            .gallery-section {
+                padding: 40px 20px !important;
+                text-align: left !important;
+            }
+            
+            .gallery-section h2 {
+                text-align: left !important;
+                font-size: 1.8rem !important;
+            }
+            
+            .gallery-section p {
+                text-align: left !important;
+                font-size: 1rem !important;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .gallery-caption {
+                text-align: left !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Contact section mobile */
+            #contact {
+                padding: 40px 20px !important;
+                text-align: left !important;
+            }
+            
+            #contact h2 {
+                text-align: left !important;
+                font-size: 1.8rem !important;
+            }
+            
+            #contact p {
+                text-align: left !important;
+                font-size: 1rem !important;
+            }
+            
+            .contact-info {
+                text-align: left !important;
+            }
+            
+            .contact-info p {
+                text-align: left !important;
+                margin-bottom: 10px !important;
+            }
+        }
+    </style>
+    
+    <!-- JavaScript for Popup Forms and Functionality -->
+    <script>
+        let currentFormType = '';
+        let currentSpaceName = '';
+        
+        // Show popup form
+        function showPopup(type, spaceName = '') {
+            currentFormType = type;
+            currentSpaceName = spaceName;
+            
+            const overlay = document.getElementById('popupOverlay');
+            const title = document.getElementById('popupTitle');
+            const subtitle = document.getElementById('popupSubtitle');
+            
+            if (type === 'booking') {
+                title.textContent = spaceName ? `Book ${spaceName}` : 'Book Your Space';
+                subtitle.textContent = 'Select your preferred date and time for booking';
+            } else {
+                title.textContent = spaceName ? `Schedule ${spaceName} Tour` : 'Schedule Your Tour';
+                subtitle.textContent = 'Choose a convenient time for your space tour';
+            }
+            
+            // Set minimum date to today
+            const dateInput = document.getElementById('bookingDate');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+            dateInput.value = today;
+            
+            // Pre-select space if specified
+            if (spaceName && type === 'booking') {
+                const spaceSelect = document.getElementById('spaceSelect');
+                spaceSelect.value = spaceName;
+                calculateTotal();
+            }
+            
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Calculate total cost
+        function calculateTotal() {
+            const startHour = parseInt(document.getElementById('startHour').value);
+            const startMinute = parseInt(document.getElementById('startMinute').value) || 0;
+            const startAmPm = document.getElementById('startAmPm').value;
+            const endHour = parseInt(document.getElementById('endHour').value);
+            const endMinute = parseInt(document.getElementById('endMinute').value) || 0;
+            const endAmPm = document.getElementById('endAmPm').value;
+            const selectedSpace = document.getElementById('spaceSelect').value;
+            const selectedDate = document.getElementById('bookingDate').value;
+            
+            if (!startHour || !startAmPm || !endHour || !endAmPm || !selectedSpace || !selectedDate) {
+                resetCalculation();
+                return;
+            }
+            
+            // Convert to 24-hour format with minutes
+            let startTime24 = startHour;
+            if (startAmPm === 'PM' && startHour !== 12) startTime24 += 12;
+            if (startAmPm === 'AM' && startHour === 12) startTime24 = 0;
+            const startTotalMinutes = startTime24 * 60 + startMinute;
+            
+            let endTime24 = endHour;
+            if (endAmPm === 'PM' && endHour !== 12) endTime24 += 12;
+            if (endAmPm === 'AM' && endHour === 12) endTime24 = 0;
+            const endTotalMinutes = endTime24 * 60 + endMinute;
+            
+            // Calculate total minutes
+            let totalMinutes = endTotalMinutes - startTotalMinutes;
+            if (totalMinutes <= 0) totalMinutes += 24 * 60; // Handle overnight bookings
+            
+            // Convert to hours (round up to nearest whole hour for billing)
+            const totalHours = Math.ceil(totalMinutes / 60);
+            
+            // Show total hours display
+            document.getElementById('totalHoursDisplay').style.display = 'block';
+            document.getElementById('totalHoursValue').textContent = totalHours + (totalHours === 1 ? ' hour' : ' hours');
+            
+            // Check minimum 2-hour booking requirement
+            if (totalHours < 2) {
+                alert('Minimum booking duration is 2 hours. Please adjust your end time.');
+                resetCalculation();
+                return;
+            }
+            
+            // Get pricing based on space and day of week
+            const date = new Date(selectedDate);
+            const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const isWeekend = dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6; // Fri, Sat, Sun
+            
+            let hourlyRate = 0;
+            switch(selectedSpace) {
+                case 'Zenith':
+                    hourlyRate = isWeekend ? 300 : 250;
+                    break;
+                case 'Lumina':
+                    hourlyRate = isWeekend ? 200 : 175;
+                    break;
+                case 'Maven':
+                    hourlyRate = isWeekend ? 175 : 150;
+                    break;
+            }
+            
+            const subtotal = totalHours * hourlyRate;
+            
+            // Apply discount if any
+            let discountAmount = 0;
+            const discountCode = document.getElementById('discountCode').value.toUpperCase();
+            if (discountCode) {
+                discountAmount = applyDiscountCalculation(subtotal, discountCode);
+            }
+            
+            const totalCost = subtotal - discountAmount;
+            
+            // Update display
+            document.getElementById('totalHours').textContent = `${totalHours} hour${totalHours !== 1 ? 's' : ''}`;
+            document.getElementById('hourlyRate').textContent = `$${hourlyRate.toFixed(2)}`;
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+            
+            if (discountAmount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountAmount').textContent = `-$${discountAmount.toFixed(2)}`;
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+        }
+        
+        // Apply discount calculation
+        function applyDiscountCalculation(subtotal, code) {
+            const discountCodes = {
+                'FIRST10': 0.10,      // 10% off
+                'STUDENT15': 0.15,    // 15% off
+                'CREATOR20': 0.20,    // 20% off
+                'VIP25': 0.25         // 25% off
+            };
+            
+            return discountCodes[code] ? subtotal * discountCodes[code] : 0;
+        }
+        
+        // Apply discount button
+        function applyDiscount() {
+            calculateTotal();
+            const discountCode = document.getElementById('discountCode').value.toUpperCase();
+            if (discountCode && applyDiscountCalculation(100, discountCode) > 0) {
+                alert(`Discount code "${discountCode}" applied successfully!`);
+            } else if (discountCode) {
+                alert(`Invalid discount code: "${discountCode}"`);
+            }
+        }
+        
+        // Reset calculation display
+        function resetCalculation() {
+            document.getElementById('totalHours').textContent = '0 hours';
+            document.getElementById('hourlyRate').textContent = '$0.00';
+            document.getElementById('subtotal').textContent = '$0.00';
+            document.getElementById('totalCost').textContent = '$0.00';
+            document.getElementById('discountRow').style.display = 'none';
+            document.getElementById('totalHoursDisplay').style.display = 'none';
+        }
+        
+        // Hide popup form
+        function hidePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetForm();
+        }
+        
+        // Generate time slots
+        function generateTimeSlots() {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            timeSlotsContainer.innerHTML = '';
+            
+            const times = [
+                '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
+                '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM',
+                '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'
+            ];
+            
+            times.forEach(time => {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = time;
+                timeSlot.onclick = () => selectTimeSlot(timeSlot);
+                timeSlotsContainer.appendChild(timeSlot);
+            });
+        }
+        
+        // Select time slot
+        function selectTimeSlot(slot) {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            slot.classList.add('selected');
+        }
+        
+        // Reset form
+        function resetForm() {
+            document.getElementById('bookingForm').reset();
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        }
+        
+        // Submit form
+        function submitForm() {
+            const form = document.getElementById('bookingForm');
+            const formData = new FormData(form);
+            const selectedTime = document.querySelector('.time-slot.selected');
+            
+            if (!selectedTime) {
+                alert('Please select a time slot.');
+                return;
+            }
+            
+            // Get form data
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const date = formData.get('date');
+            const time = selectedTime.textContent;
+            const space = formData.get('space');
+            const message = formData.get('message');
+            
+            // Validate required fields
+            if (!name || !email || !phone || !date) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Create email content
+            const subject = currentFormType === 'booking' 
+                ? `Booking Request${currentSpaceName ? ` - ${currentSpaceName}` : ''}`
+                : `Tour Request${currentSpaceName ? ` - ${currentSpaceName}` : ''}`;
+                
+            const body = `
+Hello,
+
+I would like to ${currentFormType === 'booking' ? 'book a space' : 'schedule a tour'}${currentSpaceName ? ` for ${currentSpaceName}` : ''}.
+
+Details:
+- Name: ${name}
+- Email: ${email}
+- Phone: ${phone}
+- Preferred Date: ${date}
+- Preferred Time: ${time}
+${space ? `- Space: ${space}` : ''}
+${message ? `- Additional Message: ${message}` : ''}
+
+Please confirm availability and provide next steps.
+
+Thank you!
+            `.trim();
+            
+            // Send email
+            const mailtoLink = `mailto:hello@2138studios.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Hide popup and show success message
+            hidePopup();
+            alert('Your request has been sent! We will contact you shortly to confirm your booking.');
+        }
+        
+        // Updated button functionality
+        function bookNow(spaceName = '') {
+            showPopup('booking', spaceName);
+        }
+        
+        function scheduleTour(spaceName = '') {
+            showPopup('tour', spaceName);
+        }
+        
+        // Phone call functionality
+        function callNow() {
+            window.location.href = 'tel:773-242-8810';
+        }
+        
+        // Add click handlers when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation buttons
+            const navBookButtons = document.querySelectorAll('nav a[href="#spaces"]');
+            navBookButtons.forEach(button => {
+                if (button.textContent.includes('Book Now')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        bookNow();
+                    });
+                }
+            });
+            
+            const navTourButtons = document.querySelectorAll('nav a[href="#contact"]');
+            navTourButtons.forEach(button => {
+                if (button.textContent.includes('Schedule Tour')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        scheduleTour();
+                    });
+                }
+            });
+            
+            // Hero section buttons
+            const heroBookButtons = document.querySelectorAll('.hero a[href="#spaces"]');
+            heroBookButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    bookNow();
+                });
+            });
+            
+            const heroTourButtons = document.querySelectorAll('.hero a[href="#contact"]');
+            heroTourButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    scheduleTour();
+                });
+            });
+            
+            // Space-specific booking buttons
+            const spaceBookButtons = document.querySelectorAll('.space-buttons .btn-primary');
+            spaceBookButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const spaceCard = this.closest('.space-card');
+                    const spaceName = spaceCard.querySelector('.space-title').textContent;
+                    bookNow(spaceName);
+                });
+            });
+            
+            const spaceTourButtons = document.querySelectorAll('.space-buttons .btn-secondary');
+            spaceTourButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const spaceCard = this.closest('.space-card');
+                    const spaceName = spaceCard.querySelector('.space-title').textContent;
+                    scheduleTour(spaceName);
+                });
+            });
+            
+            // Close popup when clicking overlay
+            document.getElementById('popupOverlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hidePopup();
+                }
+            });
+        });
+        
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo" style="font-size: 24px; font-weight: bold; color: #333;">TWENTYONE38</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#spaces">Our Spaces</a></li>
+                <li class="dropdown">
+                    <a href="#gallery">Gallery</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-submenu">
+                            <a href="#" class="submenu-title">Photo ▶</a>
+                            <div class="submenu-content">
+                                <a href="#lumina-photo-gallery">Lumina</a>
+                                <a href="#maven-photo-gallery">Maven</a>
+                                <a href="#zenith-photo-gallery">Zenith</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-submenu">
+                            <a href="#" class="submenu-title">Video ▶</a>
+                            <div class="submenu-content">
+                                <a href="#lumina-video-gallery">Lumina</a>
+                                <a href="#maven-video-gallery">Maven</a>
+                                <a href="#zenith-video-gallery">Zenith</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#spaces">Book Now</a></li>
+                <li><a href="#contact">Schedule Tour</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobileNav" class="mobile-nav">
+        <button class="mobile-nav-close" onclick="toggleMobileMenu()">×</button>
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#spaces" onclick="toggleMobileMenu()">Our Spaces</a>
+        <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+        <a href="#" onclick="toggleMobileMenu(); bookNow();">Book Now</a>
+        <a href="#" onclick="toggleMobileMenu(); scheduleTour();">Schedule Tour</a>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video 
+            id="heroVideo"
+            class="hero-video"
+            autoplay 
+            muted 
+            loop 
+            playsinline
+        >
+            <source src="amanda-1920.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1><img src="2138Logo.png" alt="2138" style="max-width: 250px; height: auto; display: block; margin: 0 auto 0 auto;">An Elevated Vision <span class="bold">For Content</span></h1>
+            <p>Premium content creation spaces designed for creators, brands, and visionaries.</p>
+            <p>Where your creative vision comes to life.</p>
+            <div class="cta-buttons">
+                <a href="#spaces" class="btn btn-primary">Book Your Space</a>
+                <a href="#contact" class="btn btn-secondary">Schedule Tour</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Spaces Section -->
+    <section id="spaces" class="section">
+        <h2>Our Premium Content Spaces</h2>
+        <p>Each space is meticulously designed with professional-grade equipment and thoughtful amenities to elevate your content creation experience.</p>
+        
+        <div class="spaces-grid">
+            <!-- ZENITH - NOW USING ORIGINAL Zenith.jpg -->
+            <div class="space-card">
+                <div class="space-image" style="background-image: url('Zenith.jpg');"></div>
+                <div class="space-content">
+                    <h3 class="space-title">Zenith</h3>
+                    <div class="space-price">
+                        <span class="price-weekday">$250.00 | Per Hour: Mon-Thur</span>
+                        <span class="price-weekend">$300.00 | Per Hour: Fri-Sun</span>
+                    </div>
+                    <ul class="space-features">
+                        <li>2B | 2B</li>
+                        <li>Wrap Around Balcony</li>
+                        <li>1,700 sq ft</li>
+                        <li>Capacity: 30 people</li>
+                        <li>Chicago Skyline Views</li>
+                        <li>Floor to Ceiling Windows</li>
+                        <li>Natural Lighting</li>
+                        <li>Automatic Black Out Curtains</li>
+                        <li>Two Hour Minimum</li>
+                    </ul>
+                    <div class="space-buttons">
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-secondary">Book a Tour</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LUMINA - NOW USING ORIGINAL Lumina.jpg -->
+            <div class="space-card">
+                <div class="space-image" style="background-image: url('Lumina.jpg');"></div>
+                <div class="space-content">
+                    <h3 class="space-title">Lumina</h3>
+                    <div class="space-price">
+                        <span class="price-weekday">$175.00 | Per Hour: Mon-Thur</span>
+                        <span class="price-weekend">$200.00 | Per Hour: Fri-Sun</span>
+                    </div>
+                    <ul class="space-features">
+                        <li>2B | 2B</li>
+                        <li>Balcony</li>
+                        <li>1,350 sq ft</li>
+                        <li>Capacity: 20 people</li>
+                        <li>Chicago Skyline Views</li>
+                        <li>Floor to Ceiling Windows</li>
+                        <li>Natural Lighting</li>
+                        <li>Automatic Black Out Curtains</li>
+                        <li>Two Hour Minimum</li>
+                    </ul>
+                    <div class="space-buttons">
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-secondary">Book a Tour</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MAVEN - NOW USING Maven.jpg -->
+            <div class="space-card">
+                <div class="space-image" style="background-image: url('Maven.jpg');"></div>
+                <div class="space-content">
+                    <h3 class="space-title">Maven</h3>
+                    <div class="space-price">
+                        <span class="price-weekday">$150.00 | Per Hour: Mon-Thur</span>
+                        <span class="price-weekend">$175.00 | Per Hour: Fri-Sun</span>
+                    </div>
+                    <ul class="space-features">
+                        <li>2B | 1B</li>
+                        <li>Balcony</li>
+                        <li>1,000 sq ft</li>
+                        <li>Capacity: 10 people</li>
+                        <li>Chicago Skyline Views</li>
+                        <li>Floor to Ceiling Windows</li>
+                        <li>Natural Lighting</li>
+                        <li>Automatic Black Out Curtains</li>
+                        <li>Two Hour Minimum</li>
+                    </ul>
+                    <div class="space-buttons">
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-secondary">Book a Tour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Zenith Photo Gallery Section -->
+    <section id="zenith-photo-gallery" class="section">
+        <h2>Zenith Photo Gallery</h2>
+        <p>Explore our premium content studio through these stunning photographs showcasing the sophisticated design, luxury amenities, and breathtaking city views.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="BMBB1341.jpg" alt="Zenith Studio - Main Living Area" onclick="openModal(this)">
+                <div class="gallery-caption">Main Living Area with City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1278.jpg" alt="Zenith Studio - Lounge Area" onclick="openModal(this)">
+                <div class="gallery-caption">Elegant Lounge with Gold Accents</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1327.jpg" alt="Zenith Studio - Work Space" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Work Space</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1284.jpg" alt="Zenith Studio - Entertainment Area" onclick="openModal(this)">
+                <div class="gallery-caption">Entertainment Area with Modern Design</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1382.jpg" alt="Zenith Studio - Kitchen" onclick="openModal(this)">
+                <div class="gallery-caption">Gourmet Kitchen with City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1602.jpg" alt="Zenith Studio - City View" onclick="openModal(this)">
+                <div class="gallery-caption">Panoramic City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1585.jpg" alt="Zenith Studio - Outdoor Terrace" onclick="openModal(this)">
+                <div class="gallery-caption">Private Outdoor Terrace</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1609.jpg" alt="Zenith Studio - Downtown View" onclick="openModal(this)">
+                <div class="gallery-caption">Downtown Chicago Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1618.jpg" alt="Zenith Studio - Aerial View" onclick="openModal(this)">
+                <div class="gallery-caption">Aerial City Perspective</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1623.jpg" alt="Zenith Studio - Skyline View" onclick="openModal(this)">
+                <div class="gallery-caption">Chicago Skyline Vista</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1598.jpg" alt="Zenith Studio - Balcony" onclick="openModal(this)">
+                <div class="gallery-caption">Private Balcony Space</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1592.jpg" alt="Zenith Studio - Terrace Seating" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Terrace Seating</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1571.jpg" alt="Zenith Studio - Outdoor Lounge" onclick="openModal(this)">
+                <div class="gallery-caption">Outdoor Lounge Area</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1543.jpg" alt="Zenith Studio - Bedroom" onclick="openModal(this)">
+                <div class="gallery-caption">Master Bedroom Suite</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB1474.jpg" alt="Zenith Studio - Luxury Bedroom" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Bedroom with Gold Accents</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Zenith Video Gallery Section -->
+    <section id="zenith-video-gallery" class="section">
+        <h2>Zenith Video Gallery</h2>
+        <p>Experience our premium content studio through immersive video content showcasing the space in motion.</p>
+        
+        <div class="video-gallery">
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="amanda-1920.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-caption">Zenith Studio - Complete Tour</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Maven Photo Gallery Section -->
+    <section id="maven-photo-gallery" class="section">
+        <h2>Maven Photo Gallery</h2>
+        <p>Discover our sophisticated content studio featuring modern design, professional amenities, and inspiring city views perfect for content creation.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="BMR07457.jpg" alt="Maven Studio - Professional Setup" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Content Creation Setup</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07485.jpg" alt="Maven Studio - Modern Interior" onclick="openModal(this)">
+                <div class="gallery-caption">Modern Interior with Natural Light</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07495.jpg" alt="Maven Studio - Creative Space" onclick="openModal(this)">
+                <div class="gallery-caption">Creative Workspace Environment</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07491.jpg" alt="Maven Studio - Elegant Design" onclick="openModal(this)">
+                <div class="gallery-caption">Elegant Design with City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07513.jpg" alt="Maven Studio - Luxury Amenities" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Amenities and Comfort</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07522.jpg" alt="Maven Studio - Professional Lighting" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Lighting Setup</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMR07525.jpg" alt="Maven Studio - Sophisticated Space" onclick="openModal(this)">
+                <div class="gallery-caption">Sophisticated Content Creation Space</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB9870.jpg" alt="Maven Studio - Professional Environment" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Environment with Style</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB9887.jpg" alt="Maven Studio - Modern Amenities" onclick="openModal(this)">
+                <div class="gallery-caption">Modern Amenities and Comfort</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB9892.jpg" alt="Maven Studio - Luxury Features" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Features and Design</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00006-Edit.jpg" alt="Maven Studio - Creative Workspace" onclick="openModal(this)">
+                <div class="gallery-caption">Creative Workspace with Professional Lighting</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00173.jpg" alt="Maven Studio - Elegant Interior" onclick="openModal(this)">
+                <div class="gallery-caption">Elegant Interior Design Elements</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00173(1).jpg" alt="Maven Studio - Sophisticated Design" onclick="openModal(this)">
+                <div class="gallery-caption">Sophisticated Design with City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00198-Edit.jpg" alt="Maven Studio - Premium Setup" onclick="openModal(this)">
+                <div class="gallery-caption">Premium Content Creation Setup</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00340.jpg" alt="Maven Studio - Professional Space" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Space with Natural Light</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00394.jpg" alt="Maven Studio - Modern Design" onclick="openModal(this)">
+                <div class="gallery-caption">Modern Design with Chicago Skyline</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00456-Edit.jpg" alt="Maven Studio - Luxury Setting" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Setting with Professional Amenities</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241112-DHP00006-Edit.jpg" alt="Maven Studio - Professional Environment" onclick="openModal(this)">
+                <div class="gallery-caption">Professional Environment with Style</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Maven Video Gallery Section -->
+    <section id="maven-video-gallery" class="section">
+        <h2>Maven Video Gallery</h2>
+        <p>Experience our Maven studio through immersive video content showcasing the space in motion.</p>
+        
+        <div class="video-gallery">
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="2811Video.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-caption">Maven Studio - Complete Tour</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lumina Photo Gallery Section -->
+    <section id="lumina-photo-gallery" class="section">
+        <h2>Lumina Photo Gallery</h2>
+        <p>Discover our sophisticated content studio featuring modern design, professional amenities, and inspiring city views perfect for content creation.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="BMBB7937.jpg" alt="Lumina Studio - Modern Kitchen" onclick="openModal(this)">
+                <div class="gallery-caption">Modern Kitchen with Professional Lighting</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB7942.jpg" alt="Lumina Studio - Creative Workspace" onclick="openModal(this)">
+                <div class="gallery-caption">Creative Workspace with Motivational Art</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB7972.jpg" alt="Lumina Studio - City Skyline" onclick="openModal(this)">
+                <div class="gallery-caption">Stunning Chicago Skyline Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB7925.jpg" alt="Lumina Studio - Living Area" onclick="openModal(this)">
+                <div class="gallery-caption">Sophisticated Living Area with Teal Accents</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB7974.jpg" alt="Lumina Studio - Lakefront Views" onclick="openModal(this)">
+                <div class="gallery-caption">Breathtaking Lakefront and City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="BMBB7965.jpg" alt="Lumina Studio - Outdoor Terrace" onclick="openModal(this)">
+                <div class="gallery-caption">Private Outdoor Terrace with Seating</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00067.jpg" alt="Lumina Studio - Lifestyle Portrait" onclick="openModal(this)">
+                <div class="gallery-caption">Sophisticated Living Space with City Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00087-Edit.jpg" alt="Lumina Studio - Professional Portrait" onclick="openModal(this)">
+                <div class="gallery-caption">Elegant Styling with Chicago Skyline</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00097.jpg" alt="Lumina Studio - Couple Portrait" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Lounge with Panoramic Views</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00291.jpg" alt="Lumina Studio - Modern Amenities" onclick="openModal(this)">
+                <div class="gallery-caption">Modern Amenities and Comfort</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00345.jpg" alt="Lumina Studio - Premium Features" onclick="openModal(this)">
+                <div class="gallery-caption">Premium Features and Design</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00375-Edit.jpg" alt="Lumina Studio - Luxury Setting" onclick="openModal(this)">
+                <div class="gallery-caption">Luxury Setting with Professional Lighting</div>
+            </div>
+            <div class="gallery-item">
+                <img src="20241111-DHP00422.jpg" alt="Lumina Studio - Sophisticated Atmosphere" onclick="openModal(this)">
+                <div class="gallery-caption">Sophisticated Atmosphere for Content Creation</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lumina Video Gallery Section -->
+    <section id="lumina-video-gallery" class="section">
+        <h2>Lumina Video Gallery</h2>
+        <p>Experience our Lumina studio through immersive video content showcasing the space in motion.</p>
+        
+        <div class="video-gallery">
+            <div class="video-item">
+                <video autoplay muted loop playsinline>
+                    <source src="final2-1920.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-caption">Lumina Studio - Complete Tour</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Ready to elevate your content creation?</p>
+            <p><strong>Email:</strong> <a href="mailto:hello@2138studios.com">hello@2138studios.com</a></p>
+            <p><strong>Phone:</strong> <a href="javascript:void(0)" onclick="callNow()">773.242.8810</a></p>
+            <p><strong>Location:</strong> South Loop Chicago</p>
+        </div>
+    </section>
+    
+    <!-- Booking/Tour Popup Form -->
+    <div id="bookingPopup" class="popup-overlay">
+        <div class="popup-form">
+            <span class="close-popup" onclick="hidePopup()">&times;</span>
+            <div class="popup-header">
+                <h2 id="popupTitle">Book Your Space</h2>
+                <p id="popupSubtitle">Select your preferred date and time</p>
+            </div>
+            
+            <form id="bookingForm" name="booking" method="POST" data-netlify="true">
+                <input type="hidden" name="_subject" value="Booking Request">
+                <input type="hidden" name="form_type" value="booking">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingDate">Preferred Date *</label>
+                        <input type="date" id="bookingDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spaceSelect">Preferred Space</label>
+                        <select id="spaceSelect" name="space" onchange="calculateTotal()">
+                            <option value="">Any Available Space</option>
+                            <option value="Zenith">Zenith: $250-$300</option>
+                            <option value="Lumina">Lumina: $175-$200</option>
+                            <option value="Maven">Maven: $150-$175</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Start Time *</label>
+                    <div class="time-input-group">
+                        <select id="startHour" name="startHour" onchange="calculateTotal()" required>
+                            <option value="">Hour</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <label>:</label>
+                        <select id="startMinute" name="startMinute" onchange="calculateTotal()" required>
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+                        <select id="startAmPm" name="startAmPm" onchange="calculateTotal()" required>
+                            <option value="">AM/PM</option>
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>End Time *</label>
+                    <div class="time-input-group">
+                        <select id="endHour" name="endHour" onchange="calculateTotal()" required>
+                            <option value="">Hour</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <label>:</label>
+                        <select id="endMinute" name="endMinute" onchange="calculateTotal()" required>
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+                        <select id="endAmPm" name="endAmPm" onchange="calculateTotal()" required>
+                            <option value="">AM/PM</option>
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                        </select>
+                    </div>
+                    <div class="total-hours-display" id="totalHoursDisplay" style="display: none;">
+                        Total Hours: <span id="totalHoursValue">0</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="discountCode">Discount Code</label>
+                    <div class="discount-input">
+                        <input type="text" id="discountCode" name="discountCode" placeholder="Enter discount code">
+                        <button type="submit" onclick="applyDiscount()">Apply</button>
+                    </div>
+                </div>
+                
+                <div class="calculation-box">
+                    <div class="calculation-row">
+                        <span>Total Hours:</span>
+                        <span id="totalHours">0 hours</span>
+                    </div>
+                    <div class="calculation-row">
+                        <span>Rate per Hour:</span>
+                        <span id="hourlyRate">$0.00</span>
+                    </div>
+                    <div class="calculation-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="calculation-row" id="discountRow" style="display: none;">
+                        <span>Discount:</span>
+                        <span id="discountAmount">-$0.00</span>
+                    </div>
+                    <div class="calculation-row total">
+                        <span>Estimated Total Cost:</span>
+                        <span id="totalCost">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your project, special requirements, or any questions..."></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn-submit" onclick="submitForm()">Submit Request</button>
+                    <button type="submit" class="btn-cancel" onclick="hidePopup()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Schedule Tour Popup Form -->
+    <div id="tourPopup" class="popup-overlay">
+        <div class="popup-form">
+            <span class="close-popup" onclick="hideTourPopup()">&times;</span>
+            <div class="popup-header">
+                <h2 id="tourPopupTitle">Schedule Your Tour</h2>
+                <p id="tourPopupSubtitle">Select your preferred tour date and time</p>
+            </div>
+            
+            <form id="tourForm" name="tour" method="POST" data-netlify="true">
+                <input type="hidden" name="_subject" value="Tour Request">
+                <input type="hidden" name="form_type" value="tour">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tourFirstName">First Name *</label>
+                        <input type="text" id="tourFirstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourLastName">Last Name</label>
+                        <input type="text" id="tourLastName" name="lastName">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tourEmail">Email *</label>
+                        <input type="email" id="tourEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourPhone">Phone *</label>
+                        <input type="tel" id="tourPhone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tourDate">Preferred Tour Date *</label>
+                        <input type="date" id="tourDate" name="tourDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourSpaceSelect">Preferred Space (No Tour Cost)</label>
+                        <select id="tourSpaceSelect" name="tourSpace">
+                            <option value="">Any Available Space</option>
+                            <option value="Zenith">Zenith</option>
+                            <option value="Lumina">Lumina</option>
+                            <option value="Maven">Maven</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tourTimeSelect">Preferred Tour Time *</label>
+                    <select id="tourTimeSelect" name="tourTime" required>
+                        <option value="">Select Tour Time</option>
+                        <option value="7:00 AM">7:00 AM</option>
+                        <option value="7:30 AM">7:30 AM</option>
+                        <option value="8:00 AM">8:00 AM</option>
+                        <option value="8:30 AM">8:30 AM</option>
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="9:30 AM">9:30 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="10:30 AM">10:30 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="11:30 AM">11:30 AM</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="12:30 PM">12:30 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="1:30 PM">1:30 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="2:30 PM">2:30 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="3:30 PM">3:30 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="4:30 PM">4:30 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="5:30 PM">5:30 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="6:30 PM">6:30 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tourMessage">Additional Message</label>
+                    <textarea id="tourMessage" name="message" rows="4" placeholder="Tell us about your project, special requirements, or any questions..."></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn-submit" onclick="submitTourForm()">Submit Tour Request</button>
+                    <button type="submit" class="btn-cancel" onclick="hideTourPopup()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Shopify Integration Script -->
+    <script src="shopify-integration.js"></script>
+    
+    <script>
+        // Video autoplay management
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroVideo = document.getElementById('heroVideo');
+            
+            // Ensure video autoplays
+            heroVideo.play().catch(e => {
+                console.log('Video autoplay failed:', e);
+            });
+            
+            // Auto-play gallery videos when they come into view
+            const galleryVideos = document.querySelectorAll('.video-gallery video');
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(e => {
+                            console.log('Gallery video autoplay failed:', e);
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+            
+            galleryVideos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        });
+        
+        // Modal functionality
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        }
+        
+        // Popup management functions
+        function showPopup(type = 'booking', space = '') {
+            if (type === 'tour') {
+                showTourPopup(space);
+            } else {
+                showBookingPopup(space);
+            }
+        }
+        
+        function showBookingPopup(space = '') {
+            const popup = document.getElementById('bookingPopup');
+            const spaceSelect = document.getElementById('spaceSelect');
+            const dateInput = document.getElementById('bookingDate');
+            
+            // Set today's date as default
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            dateInput.value = formattedDate;
+            dateInput.min = formattedDate; // Prevent past dates
+            
+            // Pre-select space if specified
+            if (space) {
+                const options = spaceSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].value === space) {
+                        spaceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            popup.style.display = 'flex';
+        }
+        
+        function showTourPopup(space = '') {
+            const popup = document.getElementById('tourPopup');
+            const spaceSelect = document.getElementById('tourSpaceSelect');
+            const dateInput = document.getElementById('tourDate');
+            
+            // Set today's date as default
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            dateInput.value = formattedDate;
+            dateInput.min = formattedDate; // Prevent past dates
+            
+            // Pre-select space if specified
+            if (space) {
+                spaceSelect.value = space;
+            }
+            
+            popup.style.display = 'flex';
+        }
+        
+        function hideTourPopup() {
+            const popup = document.getElementById('tourPopup');
+            popup.style.display = 'none';
+            resetTourForm();
+        }
+        
+        function resetTourForm() {
+            document.getElementById('tourForm').reset();
+            const dateInput = document.getElementById('tourDate');
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            dateInput.value = formattedDate;
+        }
+        
+        async function submitTourForm() {
+            const form = document.getElementById('tourForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            const firstName = formData.get('firstName');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const tourDate = formData.get('tourDate');
+            const tourTime = formData.get('tourTime');
+            
+            if (!firstName || !email || !phone || !tourDate || !tourTime) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Prepare data for Formspree
+            const space = formData.get('tourSpace') || 'Any Available Space';
+            const lastName = formData.get('lastName') || '';
+            const message = formData.get('message') || '';
+            
+            const submissionData = new FormData();
+            submissionData.append('name', `${firstName} ${lastName}`);
+            submissionData.append('email', email);
+            submissionData.append('phone', phone);
+            submissionData.append('tour_date', tourDate);
+            submissionData.append('tour_time', tourTime);
+            submissionData.append('preferred_space', space);
+            submissionData.append('message', message);
+            submissionData.append('_subject', `Tour Request - ${space}`);
+            
+            try {
+                // Show loading state
+                const submitBtn = document.querySelector('#tourForm button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/xrblweyr', {
+                    method: 'POST',
+                    body: submissionData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showSuccessPopup('tour');
+                    form.reset();
+                    hideTourPopup();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('There was an error sending your tour request. Please try again or contact us directly at hello@2138studios.com');
+                console.error('Tour form submission error:', error);
+            } finally {
+                // Reset button state
+                const submitBtn = document.querySelector('#tourForm button[type="submit"]');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        // Booking Form Functions
+        let currentDiscount = 0;
+        let discountCodes = {
+            'FIRST10': 0.10,
+            'STUDENT15': 0.15,
+            'CREATOR20': 0.20,
+            'VIP25': 0.25
+        };
+        
+        function showPopup(type, space = '') {
+            if (type === 'booking') {
+                showBookingPopup(space);
+            } else if (type === 'tour') {
+                showTourPopup(space);
+            }
+        }
+        
+        function hidePopup() {
+            document.getElementById('bookingPopup').style.display = 'none';
+            resetForm();
+        }
+        
+        function resetForm() {
+            document.getElementById('bookingForm').reset();
+            resetCalculation();
+            currentDiscount = 0;
+        }
+        
+        function resetCalculation() {
+            document.getElementById('totalHours').textContent = '0 hours';
+            document.getElementById('hourlyRate').textContent = '$0.00';
+            document.getElementById('subtotal').textContent = '$0.00';
+            document.getElementById('totalCost').textContent = '$0.00';
+            document.getElementById('discountRow').style.display = 'none';
+            document.getElementById('totalHoursDisplay').style.display = 'none';
+        }
+        
+        function calculateTotal() {
+            const startHour = parseInt(document.getElementById('startHour').value);
+            const startMinute = parseInt(document.getElementById('startMinute').value) || 0;
+            const startAmPm = document.getElementById('startAmPm').value;
+            const endHour = parseInt(document.getElementById('endHour').value);
+            const endMinute = parseInt(document.getElementById('endMinute').value) || 0;
+            const endAmPm = document.getElementById('endAmPm').value;
+            const space = document.getElementById('spaceSelect').value;
+            const date = document.getElementById('bookingDate').value;
+            
+            // Reset display if any required field is missing
+            if (!startHour || !startAmPm || !endHour || !endAmPm || !space || !date) {
+                resetCalculation();
+                return;
+            }
+            
+            // Convert to 24-hour format
+            let start24 = startHour;
+            let end24 = endHour;
+            
+            if (startAmPm === 'PM' && startHour !== 12) start24 += 12;
+            if (startAmPm === 'AM' && startHour === 12) start24 = 0;
+            if (endAmPm === 'PM' && endHour !== 12) end24 += 12;
+            if (endAmPm === 'AM' && endHour === 12) end24 = 0;
+            
+            // Calculate total minutes
+            const startTotalMinutes = start24 * 60 + startMinute;
+            let endTotalMinutes = end24 * 60 + endMinute;
+            
+            // Handle next day scenarios
+            if (endTotalMinutes <= startTotalMinutes) {
+                endTotalMinutes += 24 * 60; // Add 24 hours
+            }
+            
+            const totalMinutes = endTotalMinutes - startTotalMinutes;
+            const totalHours = Math.ceil(totalMinutes / 60); // Round up to whole hours
+            
+            // Check minimum 2 hours
+            if (totalHours < 2) {
+                alert('Minimum booking is 2 hours. Please adjust your end time.');
+                resetCalculation();
+                return;
+            }
+            
+            // Show total hours display
+            const totalHoursDisplay = document.getElementById('totalHoursDisplay');
+            const totalHoursValue = document.getElementById('totalHoursValue');
+            if (totalHoursDisplay && totalHoursValue) {
+                totalHoursDisplay.style.display = 'block';
+                totalHoursValue.textContent = totalHours + ' hours';
+            }
+            
+            // Determine if it's weekend
+            const bookingDate = new Date(date);
+            const dayOfWeek = bookingDate.getDay();
+            const isWeekend = dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6; // Sunday, Friday, Saturday
+            
+            // Get hourly rate
+            let hourlyRate = 0;
+            if (space === 'Zenith') {
+                hourlyRate = isWeekend ? 300 : 250;
+            } else if (space === 'Lumina') {
+                hourlyRate = isWeekend ? 200 : 175;
+            } else if (space === 'Maven') {
+                hourlyRate = isWeekend ? 175 : 150;
+            }
+            
+            const subtotal = totalHours * hourlyRate;
+            const discountAmount = subtotal * currentDiscount;
+            const total = subtotal - discountAmount;
+            
+            // Update display
+            document.getElementById('totalHours').textContent = totalHours + ' hours';
+            document.getElementById('hourlyRate').textContent = '$' + hourlyRate.toFixed(2);
+            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('totalCost').textContent = '$' + total.toFixed(2);
+            
+            if (currentDiscount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountAmount').textContent = '-$' + discountAmount.toFixed(2);
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+        }
+        
+        function applyDiscount() {
+            const code = document.getElementById('discountCode').value.toUpperCase();
+            
+            if (discountCodes[code]) {
+                currentDiscount = discountCodes[code];
+                alert('Discount code applied: ' + (currentDiscount * 100) + '% off');
+                calculateTotal();
+            } else if (code) {
+                alert('Invalid discount code');
+                currentDiscount = 0;
+                calculateTotal();
+            }
+        }
+        
+        async function submitForm() {
+            const form = document.getElementById('bookingForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            const requiredFields = ['name', 'email', 'phone', 'date', 'startHour', 'startAmPm', 'endHour', 'endAmPm'];
+            for (let field of requiredFields) {
+                if (!formData.get(field)) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+            }
+            
+            // Get calculated values
+            const totalHours = document.getElementById('totalHoursValue').textContent;
+            const totalCost = document.getElementById('totalCost').textContent;
+            const space = document.getElementById('spaceSelect').value || 'Any Available Space';
+            
+            // Prepare form data for Formspree
+            const startTime = `${formData.get('startHour')}:${formData.get('startMinute')} ${formData.get('startAmPm')}`;
+            const endTime = `${formData.get('endHour')}:${formData.get('endMinute')} ${formData.get('endAmPm')}`;
+            
+            // Create structured data for email
+            const submissionData = new FormData();
+            submissionData.append('name', `${formData.get('name')} ${formData.get('lastName') || ''}`);
+            submissionData.append('email', formData.get('email'));
+            submissionData.append('phone', formData.get('phone'));
+            submissionData.append('date', formData.get('date'));
+            submissionData.append('space', space);
+            submissionData.append('start_time', startTime);
+            submissionData.append('end_time', endTime);
+            submissionData.append('duration', totalHours);
+            submissionData.append('total_cost', totalCost);
+            submissionData.append('discount_code', formData.get('discountCode') || 'None');
+            submissionData.append('message', formData.get('message') || 'None');
+            submissionData.append('_subject', `Booking Request for ${space}`);
+            
+            try {
+                // Show loading state
+                const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/xrblweyr', {
+                    method: 'POST',
+                    body: submissionData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showSuccessPopup('booking');
+                    form.reset();
+                    resetCalculation();
+                    hidePopup();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('There was an error sending your request. Please try again or contact us directly at hello@2138studios.com');
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                const submitBtn = document.querySelector('#bookingForm button[type="submit"]');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        // Update all booking button event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation buttons
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                if (link.textContent.includes('Book Now')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showPopup('booking');
+                    });
+                } else if (link.textContent.includes('Schedule Tour')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showPopup('tour');
+                    });
+                }
+            });
+            
+            // Hero section buttons
+            document.querySelectorAll('.hero-buttons .btn-primary').forEach(btn => {
+                if (btn.textContent.includes('Book Your Space')) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showPopup('booking');
+                    });
+                }
+            });
+            
+            document.querySelectorAll('.hero-buttons .btn-secondary').forEach(btn => {
+                if (btn.textContent.includes('Schedule Tour')) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showPopup('tour');
+                    });
+                }
+            });
+            
+            // Space-specific buttons
+            document.querySelectorAll('.space-buttons .btn-primary').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const spaceCard = btn.closest('.space-card');
+                    const spaceName = spaceCard.querySelector('.space-title').textContent;
+                    showPopup('booking', spaceName);
+                });
+            });
+            
+            document.querySelectorAll('.space-buttons .btn-secondary').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const spaceCard = btn.closest('.space-card');
+                    const spaceName = spaceCard.querySelector('.space-title').textContent;
+                    showPopup('tour', spaceName);
+                });
+            });
+        });
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        }
+        
+        // Custom success popup function
+        function showSuccessPopup(type) {
+            const message = type === 'booking' 
+                ? 'Booking request sent successfully! We will contact you within 24 hours.'
+                : 'Tour request sent successfully! We will contact you within 24 hours to schedule your tour.';
+            
+            // Create success popup
+            const successPopup = document.createElement('div');
+            successPopup.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+            `;
+            
+            successPopup.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+                    padding: 3rem 2rem;
+                    border-radius: 20px;
+                    text-align: center;
+                    max-width: 500px;
+                    margin: 2rem;
+                    border: 1px solid rgba(184, 134, 11, 0.3);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                ">
+                    <div style="
+                        width: 80px;
+                        height: 80px;
+                        background: linear-gradient(135deg, #B8860B, #DAA520);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 2rem;
+                        font-size: 2.5rem;
+                        color: white;
+                    ">✓</div>
+                    
+                    <h2 style="
+                        color: #ffffff;
+                        font-size: 2rem;
+                        margin-bottom: 1rem;
+                        font-weight: 300;
+                    ">Thank You!</h2>
+                    
+                    <p style="
+                        color: #cccccc;
+                        font-size: 1.1rem;
+                        line-height: 1.6;
+                        margin-bottom: 2rem;
+                    ">${message}</p>
+                    
+                    <div style="
+                        background: rgba(184, 134, 11, 0.1);
+                        border: 1px solid rgba(184, 134, 11, 0.3);
+                        border-radius: 15px;
+                        padding: 1.5rem;
+                        margin-bottom: 2rem;
+                    ">
+                        <p style="
+                            color: #DAA520;
+                            font-weight: 600;
+                            margin-bottom: 0.5rem;
+                        ">What's Next?</p>
+                        <p style="
+                            color: #ffffff;
+                            font-size: 0.95rem;
+                        ">Check your email for confirmation and our team will be in touch soon!</p>
+                    </div>
+                    
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        background: linear-gradient(135deg, #B8860B, #DAA520);
+                        color: white;
+                        border: none;
+                        padding: 1rem 2rem;
+                        border-radius: 50px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Continue
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(successPopup);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (successPopup.parentElement) {
+                    successPopup.remove();
+                }
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
+
