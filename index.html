@@ -2155,7 +2155,7 @@ Thank you!
                 <p id="popupSubtitle">Select your preferred date and time</p>
             </div>
             
-            <form id="bookingForm" name="booking" method="POST" data-netlify="true">
+            <form id="bookingForm" name="booking">
                 <input type="hidden" name="_subject" value="Booking Request">
                 <input type="hidden" name="form_type" value="booking">
                 <div class="form-row">
@@ -2302,7 +2302,7 @@ Thank you!
                 </div>
                 
                 <div class="form-buttons">
-                    <button type="submit" class="btn-submit" onclick="submitForm()">Submit Request</button>
+                    <button type="button" class="btn-submit" onclick="submitForm()">
                     <button type="submit" class="btn-cancel" onclick="hidePopup()">Cancel</button>
                 </div>
             </form>
@@ -2318,7 +2318,7 @@ Thank you!
                 <p id="tourPopupSubtitle">Select your preferred tour date and time</p>
             </div>
             
-            <form id="tourForm" name="tour" method="POST" data-netlify="true">
+            <form id="tourForm" name="tour">
                 <input type="hidden" name="_subject" value="Tour Request">
                 <input type="hidden" name="form_type" value="tour">
                 <div class="form-row">
@@ -2397,7 +2397,7 @@ Thank you!
                 </div>
                 
                 <div class="form-buttons">
-                    <button type="submit" class="btn-submit" onclick="submitTourForm()">Submit Tour Request</button>
+                    <button type="button" class="btn-submit" onclick="submitTourForm()">
                     <button type="submit" class="btn-cancel" onclick="hideTourPopup()">Cancel</button>
                 </div>
             </form>
